@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Translation Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .translate-icon {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+</head>
+<body>
+ 
+    <h1>Welcome to My Website</h1>
+    <p>This is an example page to demonstrate the translation feature.</p>
+ 
+    <!-- Translation Icon -->
+    <!-- <a href="#" onclick="event.preventDefault(); googleTranslateElementInit();">
+        <img src="https://static.vecteezy.com/system/resources/previews/005/567/686/original/translator-icon-logo-two-squares-and-arrow-translate-symbol-isolated-on-white-background-language-translation-icon-free-vector.jpg" alt="Translate to Vietnamese" class="translate-icon">
+    </a> -->
+ 
+    <div id="google_translate_element"></div>
+ 
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'en',
+                includedLanguages: 'vi,en,zh,th,uk',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+ 
+</body>
+</html>
