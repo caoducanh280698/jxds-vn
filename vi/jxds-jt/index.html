@@ -1293,7 +1293,31 @@
     </script>
     
     
-    
+    <script>
+        document.querySelectorAll('#c_navigation_0061635239687823 .e_navigationA-12 .p_level1Item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+        const ul = item.querySelector('ul');
+        if (ul) {
+            const afterStyle = document.createElement('style');
+            afterStyle.textContent = `
+                #c_navigation_0061635239687823 .e_navigationA-12 .p_level1Item:hover ul::after {
+                    display: block;
+                }
+            `;
+            document.head.appendChild(afterStyle);
+        }
+    });
+
+    item.addEventListener('mouseleave', () => {
+        const styles = document.head.querySelectorAll('style');
+        styles.forEach(style => {
+            if (style.textContent.includes('::after')) {
+                style.remove();
+            }
+        });
+    });
+});
+    </script>
     
     </body>
 <!--  , Fri, 27 Sep 2024 05:25:12 GMT -->
