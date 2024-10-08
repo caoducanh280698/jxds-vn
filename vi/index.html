@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <script src="../common.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #contact-form {
+            background: #fff;
+            padding: 20px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        #contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        #contact-form button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #contact-form button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="contact-form" onsubmit="sendEmail(event)">
+        <h2>Để lại thông tin</h2>
+        <label for="name">Tên:</label>
+        <input type="text" id="name" name="from_name" required>
+        <br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="from_email">
+        <br><br>
+        <label for="tel">Số điện thoại:</label>
+        <input type="tel" id="tel" name="from_tel" required>
+        <br><br>
+        <label for="message">Tin nhắn:</label>
+        <textarea id="message" name="message" placeholder="Chúng tôi mong muốn hợp tác với bạn."
+            required>Chúng tôi mong muốn hợp tác với bạn.</textarea>
+        <br><br>
+        <button type="submit">Gửi</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function () {
+            const randomStrings = randomString();
+            emailjs.init(randomStrings);
+        })();
+
+        function sendEmail(event) {
+            event.preventDefault();
+            emailjs.sendForm('service_255vvjb', 'template_0oyvcp7', '#contact-form')
+                .then(function (response) {
+                    alert('Email sent successfully!');
+                }, function (error) {
+                    alert('Failed to send email. Please try again.');
+                });
+        }
+    </script>
+</body>
+
+</html>
